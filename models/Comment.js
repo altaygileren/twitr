@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Create Post Schema
-const PostSchema = new Schema({
-  twit: {
+// Create Comment
+const CommentSchema = new Schema({
+  comment: {
     type: String,
     required: true
   },
@@ -12,13 +12,17 @@ const PostSchema = new Schema({
     ref: "User"
   },
   username: {
-    type: String
+    type: String,
+    required: true
   },
-  comments: [],
+  twit: {
+    type: Schema.Types.ObjectId,
+    ref: "Post"
+  },
   date: {
     type: Date,
     default: Date.now
   }
 });
 
-module.exports = Post = mongoose.model('post', PostSchema);
+module.exports = Comment = mongoose.model('comment', CommentSchema);
