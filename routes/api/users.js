@@ -5,7 +5,6 @@ const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
 
-
 // Create
 // @route   POST api/users
 // @desc    Create a User
@@ -75,7 +74,6 @@ router.get('/', (req, res) => {
 });
 
 // Update
-
 
 // Delete
 // @route   DELETE api/users
