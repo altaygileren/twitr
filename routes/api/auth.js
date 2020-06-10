@@ -12,13 +12,12 @@ const auth = require('../../middleware/auth');
 // @desc    Login
 // @access  Public
 router.post('/', (req, res) => {
-  const { email, password } = req.body;
-
-  if (!email || !password) {
+  const { username, password } = req.body;
+  if (!username || !password) {
     return res.status(400).json({ msg: 'Please make sure to fill in all fields' });
   }
 
-  User.findOne({ email })
+  User.findOne({ username })
     .then(user => {
       if (!user) return res.status(400).json({ msg: 'User does not exist' });
 
@@ -38,7 +37,8 @@ router.post('/', (req, res) => {
                   username: user.namne,
                   email: user.email,
                   firstName: user.firstName,
-                  lastName: user.lastName
+                  lastName: user.lastName,
+                  comments: user.comments
                 }
               })
             }
