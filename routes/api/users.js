@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const User = require('../../models/User');
 const bcrypt = require('bcryptjs');
-const config = require('config');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 // Create
 // @route   POST api/users
@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
           .then(user => {
             jwt.sign(
               { id: user.id },
-              config.get('jwtSecret'),
+              process.env.jwtSecret,
               (err, token) => {
                 if (err) throw err;
                 res.json({
