@@ -53,7 +53,6 @@ router.delete('/:id', (req, res) => {
     .catch(err => res.status(404));
 
   res.send('The Item was deleted');
-
 });
 
 module.exports = router;
