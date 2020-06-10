@@ -7,7 +7,12 @@ const axios = require('axios');
 // @desc Get all news articles
 // @access Public
 router.get('/', async (req, res) => {
-  const newsArticles = await axios.get(`http://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.NEWS_API_KEY}`)
+  const newsArticles = await axios.get(`http://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.NEWS_API_KEY}`, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'crossDomain': true
+    }
+  })
   res.json({ news: newsArticles.data.articles })
 })
 
