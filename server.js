@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 // Database
-const db = config.get("mongoURI");
+const db = config.get('mongoURI');
 
 // Connect to Mongo
 mongoose
