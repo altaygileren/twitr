@@ -11,9 +11,10 @@ const auth = require('./routes/api/auth');
 // Body Parser middleware
 app.use(cors());
 app.use(express.json());
+require('dotenv').config();
 
 // Database
-const db = config.get('mongoURI');
+const db = process.env.mongoURI
 
 // Connect to Mongo
 mongoose
